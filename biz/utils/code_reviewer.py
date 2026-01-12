@@ -23,7 +23,7 @@ class BaseReviewer(abc.ABC):
         prompt_templates_file = "conf/prompt_templates.yml"
         try:
             # 在打开 YAML 文件时显式指定编码为 UTF-8，避免使用系统默认的 GBK 编码。
-            with open(prompt_templates_file, "r", encoding="utf-8") as file:
+            with open(prompt_templates_file, "r", encoding="utf-8", errors='replace') as file:
                 prompts = yaml.safe_load(file).get(prompt_key, {})
 
                 # 使用Jinja2渲染模板
